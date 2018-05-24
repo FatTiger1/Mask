@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "902027ab-1043-ca4e-a9fc-a4753d3e7e9a++7097",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "902027ab-1043-ca4e-a9fc-a4753d3e7e9a++7097" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "902027ab-1043-ca4e-a9fc-a4753d3e7e9a++7097" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9A2C7831-9F47-458F-AEEA-056B7B2CFD85",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "902027ab-1043-ca4e-a9fc-a4753d3e7e9a++7097" : "ios_CCR\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CloudClassRoom",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "branches\/TIGER_GXY\/CloudClassRoom\/CloudClassRoom.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/www.gwypx.com.cn:8444\/svn\/807_ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "902027ab-1043-ca4e-a9fc-a4753d3e7e9a++7097"
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+//#define Host @"http://192.168.1.9/tm_gwypx"//主机名
+
+#define Host @"http://www.gwypx.com.cn/tm"//主机名正式
+
+#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define CreatWeakSelf __weak typeof(self) weakSelf = self;
+#define BLUE_COLOR [UIColor colorWithRed:(float)0/255 green:(float)113/255 blue:(float)220/255 alpha:1]
+#define TOP_COLOR [UIColor colorWithRed:(float)225/255 green:(float)225/255 blue:(float)225/255 alpha:1]
+#define IMAGE_URL(_STR_) [_STR_ hasPrefix:@"http"] == YES ? [NSURL URLWithString:[_STR_ stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : [NSURL URLWithString:[[NSString stringWithFormat:@"%@%@", Host, _STR_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+#define MAIN_WINDOW [[[UIApplication sharedApplication] delegate] window]
+
+#define MaxQueue 1
+#define HEADER 64
+#define FOOT 49
+#define TIME 10
+#define PhotoPageCount 39
+#define START_TIME 2010
+#define InputViewMaxHeight 100
+#define ChatPageCount 20
+#define KeyboardAnimationDuration 0.25
+#define LoadServerMessageTime 5
+#define MaxCount 9999
+#define ARC_ENABLED
+
+#define kShadowOffsetY (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 4.0f : 2.0f)
+#define kShadowBlur (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 4.0f : 2.0f)
+#define kStrokeSize (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 6.0f : 3.0f)
+
+#define databaseName @"ccr_gxy.sqlite"                     //数据库名称
+#define loadingMessage @"加载中,请稍后..."
+#define updateMsgTitle @"干部云课堂升级提示"
+#define netWorkError @"网络连接失败! "
+#define messageInfo @"目前有新版本,请更新"
+#define NOAgreeSelectCourse @"此课程对您不开放"
+#define net_tip @"现在是2G/3G/4G网络,下载内容将消耗您的流量,是否继续下载?"
+#define play_tip @"现在是2G/3G/4G网络,播放视频将消耗您的流量,是否继续播放?"
+
+#define downloadFinished @"downloadFinished"
+#define initDwonloadStatus @"initDwonloadStatus"
+
+#define DownloadPath [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
+#define AppPath [[NSBundle mainBundle] resourcePath]
+
+
+#pragma mark - 通信接口
+#pragma mark - 用户模块
+#define user_login @"%@/device/login.do"    //登录
+#define user_register @"%@/device/register.do"    //注册
+#define user_idntify @"%@/device/register!sendSms.do?mobile=%@"    //验证码
+
+#define version_check @"%@/device/version_check.do?version=%@&device=1"   //升级检查
+#define change_password @"%@/device/change_password.do"   //修改密码
+#define upload_avatar @"%@/device/upload_avatar.do"                    //上传头像POST
+#define notice_list @"%@/device/notice.do?user_id=%@"                  //推送消息列表
+//#define notice @"%@/device/notice.do?uuid=%@"                        //推送信息
+#define device_exception @"%@/device/exception!push.do"                //系统错误记录
+#define device_exception_check @"%@/device/exception!list.do?device=1"  //查看系统错误记录
+#define user_permission @"%@/device/user_status.do?user_id=%@"         //用户权限
+#define server_time @"%@/device/datetime.do"                           //服务器时间
+
+#pragma mark - 首页模块
+#define recommend @"%@/device/recommend.do?user_id=%@&device=1"        //首页推荐
+#define recommend_subject @"%@/device/recommend!subject.do?user_id=%@&category_id=%@" //专题推荐
+#define course_search @"%@/device/search.do?user_id=%@&keyword=%@"     //课程检索
+#define channel_type @"%@/device/channel.do?channel_type=%d"           //频道类型
+#define course_channel @"%@/device/channel!course.do?user_id=%@&channel_id=%@" //课程频道
+#define course_year @"%@/device/course!year.do?user_id=%@&year=%@"     //课程列表(年度)
+#define course_type @"%@/device/course!type.do?user_id=%@&type=%d" //课程列表(必修/选修)
+
+#define channel_hot @"%@/device/channel!hot.do?user_id=%@"                //热门
+#define channel_new @"%@/device/channel!newCourse.do?user_id=%@&type=%@&date=%@"     //最新
+
+#define teacher_list @"%@/device/teacher.do"                              //名师讲堂名师列表
+#define teacher_course @"%@/device/teacher!course.do?teacher_id=%@&user_id=%@" //名师讲堂名师课程
+
+#pragma mark - 课程分类
+#define course_category @"%@/device/category.do?user_id=%@"            //大类列表
+//#define subject @"%@/device/subject.do?user_id=%@&category_id=%@"      //系列列表
+#define subject @"%@/device/category!categoryChild.do?user_id=%@&category_id=%@"      //系列列表
+#define course_list @"%@/device/course!list.do?user_id=%@&category_id=%@" //课程列表
+#define course_single @"%@/device/course.do?course_id=%@"              //课程(单门)
+#define comment_list @"%@/device/comment!list.do?course_id=%@&user_id=%@&comment_id=%@" //评论列表
+#define comment_send @"%@/device/comment!send.do"                      //提交评论POST
+#define course_note @"%@/device/course_note.do?user_id=%@&course_id=%@"//获取课程笔记
+#define course_note_save @"%@/device/course_note!save.do"            //提交课程笔记POST
+#define course_elective @"%@/device/course!elective.do?user_id=%@&course_id=%@"//选课
+#define course_unelective @"%@/device/course!unelective.do?user_id=%@&course_id=%@" //退课
+
+#pragma mark - 学习中心
+#define study_sync @"%@/device/study_sync.do"                        //学习数据同步POST
+#define user_course @"%@/device/user_course.do?user_id=%@&course_type=%@"//选修必修课程
+#define user_course_all @"%@/device/user_course.do?user_id=%@"       //选修必修课所有数据
+#define user_courseData_sync @"%@/device/course!syncData.do"//同步课程数据
+
+
+#pragma mark - 群组模块
+#define group_list @"%@/device/group!list.do?user_id=%@"               //群组列表
+#define group_join @"%@/device/group!join.do?user_id=%@&group_id=%@"   //加入群组
+#define group_quit @"%@/device/group!quit.do?user_id=%@&group_id=%@"   //退出群组
+#define group_user @"%@/device/group!user.do?group_id=%@"              //群组学员名单
+
+#pragma mark - 学习班
+#define teacher_class @"%@/device/teacher_class.do?user_id=%@"         //我管理的学习班列表
+#define user_class @"%@/device/user_class.do?user_id=%@"               //学习班列表
+#define user_clazz @"%@/device/clazz.do?user_id=%@"                         //学习班报名列表
+#define clazz_sign @"%@/device/clazz!sign.do?user_id=%@&class_id=%@"   //学习班报名
+
+#define clazz_course @"%@/device/clazz!course.do?user_id=%@&class_id=%@"//学习班课程列表
+//#define clazz_notice @"%@/device/notice.do?class_id=%@"                //推送消息
+#define clazz_send_notice @"%@/device/notice!send.do"                  //发送推送消息POST
+#define clazz_schedule @"%@/device/clazz!schedule.do?class_id=%@"      //教学日程
+
+#pragma mark - 交互模块
+#define photo_list @"%@/device/photo.do?relation_id=%@&id=%d&count=%@&type=%@&user_id=%@"    //相册列表
+#define photo_upload @"%@/device/photo!upload.do"                //上传照片POST
+#define photo_zan @"%@/device/photo!zan.do?relation_id=%@&user_id=%@&photo_id=%d"               //照片点赞
+#define photo_zanList @"%@/device/photo!zancount.do?relation_id=%@"   //照片点赞列表
+#define photo_delete @"%@/device/photo!delete.do?relation_id=%@&user_id=%@&photo_id=%d"               //删除照片ID
+#define chat_list @"%@/device/chat.do?relation_id=%@&id=%d&count=%d&type=%d"               //获取最新聊天信息列表
+#define chat_submit @"%@/device/chat!submit.do?relation_id=%@&user_id=%@&content=%@&id=%d"         //提交聊天信息
+#define resource_list @"%@/device/resource.do?relation_id=%@"          //资源文件列表
+#define guide @"%@/device/guide.do?time=%@"                            //学员须知
+#define evaluation @"%@/device/evaluation.do?user_id=%@&class_id=%@"   //教学评估
+#define clazz_user @"%@/device/clazz!user.do?class_id=%@"              //班级学员名单
+#define user_record @"%@/device/user_record.do?user_id=%@"     //学习档案
+//#define micro_course @"%@/device/subject!microcourse.do?user_id=%@" //首页微课
+#define micro_course @"%@/device/category!categoryChild.do?user_id=%@&category_id=%@"//首页微课
+
+#pragma mark - 考试中心
+#define exam_center @"%@/device/exam_user!getExamList.do?user_id=%@"   //考试中心
+#define exam_course @"%@/device/course_exam!start.do?user_id=%@&course_id=%d" //课程考试
+#define exam_class @"%@/device/exam_user!classExamStart.do?user_id=%@&class_id=%@" //班级结业考试
+
+//获取通知uuid
+#define uuid_list @"%@/device/notice!register.do?user_id=%@"           //消息通知uuid
+
+#pragma mark -
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+
+#import "Common.h"
+#import "SqlStatement.h"
+
+#import "AppDelegate.h"
+
+//vendor
+#import "XMExtension.h"
+#import "MJExtension.h"
+
+#import "Entity.h"
+//Model
+#import "Resource.h"
+#import "Caption.h"
+#import "ImsmanifestXML.h"
+#import "CourseXML.h"
+#import "SectionXML.h"
+#import "PageXML.h"
+#import "OptionXML.h"
+#import "QuestionXML.h"
+#import "ExamXML.h"
+#import "Download.h"
+#import "Login.h"
+#import "Comment.h"
+#import "Recommend.h"
+#import "Notice.h"
+#import "Photo.h"
+#import "CourseCategory.h"
+#import "Course.h"
+#import "GroupList.h"
+#import "UserClazz.h"
+#import "Chat.h"
+#import "Teacher.h"
+#import "RecommendBooks.h"
+#import "PlayInfo.h"
+
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "FMDB.h"
+#import "TYFMDBTool.h"
+#import "DBAccress.h"
+#import "TouchXML.h" 
+#import "Reachability.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "THLabel.h"
+#import "SqliteManager.h"
+#import "DataManager.h"
+#import "CycleScrollView.h"
+#import "XMTopScrollView.h"
+#import "CourseListCell.h"
+#import "ToolBarView.h"
+#import "ChapterView.h"
+#import "HeadView.h"
+#import "StudyClassCell.h"
+#import "TableView.h"
+#import "Button.h"
+#import "MessageCell.h"
+#import "XGPush.h"
+#import "XGSetting.h"
+#import "GuidanceCell.h"
+#import "ChapterCell.h"
+#import "DXStarRatingView.h"
+#import "ChapterListView.h"
+
+//manager
+#import "Manager.h"
+
+#import "DocViewController.h"
+#import "PPTViewController.h"
+#import "EvaluationSubmitViewController.h"
+#import "CourseTestViewController.h"
+#import "ThreeScreenPlayViewController.h"
+#import "NoteViewController.h"
+#import "ChapterViewController.h"
+#import "Mp3ChapterViewController.h"
+#import "EvaluationViewController.h"
+#import "CourseInfoView.h"
+#import "PlayerViewController.h"
+#import "HeaderViewController.h"
+#import "StudyOnlineController.h"
+#import "CourseDetailViewController.h"
+#import "CategoryView.h"
+#import "CourseListViewController.h"
+#import "CourseCategory.h"
+#import "LoginViewController.h"
+#import "TabBarController.h"
+#import "SettingViewController.h"
+#import "FinishedCourseCell.h"
+#import "FinishedCourseViewController.h"
+#import "VerViewController.h"
+#import "GuidanceViewController.h"
+#import "SearchViewController.h"
+#import "MessageListViewController.h"
+
+#import "ExaminationCenterController.h"
+#import "CTAssetsPickerController.h"
+#import "SingalImageScrollView.h"
+#import "ChatViewController.h"
+#import "DocViewController.h"
+#import "LoadWebViewController.h"
+#import "DetailViewController.h"
+#import "PersonnelListViewController.h"
+#import "PhotoDetailViewController.h"
+#import "PhotoListViewController.h"
+#import "PhotoViewController.h"
+#import "FeedbackViewController.h"
+
+#import "SinglePlayerViewController.h"
+#import "DownloadViewController.h"
+#import "SubjectViewController.h"
+#import "MyStudyClassViewController.h"
+#import "StudyClassController.h"
+#import "StudyFileViewController.h"
+
+#import "TeacherViewController.h"
+#import "DemoView.h"
+#import "BottomCollectionViewCell.h"
+
+//shareSDK
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <ShareSDKUI/ShareSDKUI.h>
+#import "WXApi.h"
+#import "TBXML.h"
+
+
+
+#endif
+
+
