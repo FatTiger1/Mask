@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		048E3B0C20F7326200C66BD3 /* ShadeTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048E3B0B20F7326200C66BD3 /* ShadeTextLabel.m */; };
 		049784D820F48B1200540B9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 049784D720F48B1200540B9E /* AppDelegate.m */; };
 		049784DB20F48B1200540B9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049784DA20F48B1200540B9E /* ViewController.m */; };
 		049784DE20F48B1200540B9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049784DC20F48B1200540B9E /* Main.storyboard */; };
@@ -17,10 +16,8 @@
 		049784F020F48B1200540B9E /* MaskDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049784EF20F48B1200540B9E /* MaskDemoTests.m */; };
 		049784FB20F48B1200540B9E /* MaskDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049784FA20F48B1200540B9E /* MaskDemoUITests.m */; };
 		0497850A20F48B5A00540B9E /* UIView+Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497850920F48B5A00540B9E /* UIView+Mask.m */; };
-		0497850C20F4A4DD00540B9E /* backImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0497850B20F4A4DD00540B9E /* backImage.png */; };
 		0497850F20F4B06400540B9E /* ShadeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497850E20F4B06400540B9E /* ShadeLabel.m */; };
-		04B1192F20FC246D00C5ADAB /* BezierDrawTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B1192E20FC246D00C5ADAB /* BezierDrawTextViewController.m */; };
-		04B1193220FC2EFF00C5ADAB /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B1193120FC2EFF00C5ADAB /* MyImageView.m */; };
+		04B1193420FC75CB00C5ADAB /* backImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B1193320FC75CB00C5ADAB /* backImage.jpg */; };
 		04C7B43A20F87E0600C7AC4C /* MaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7B43920F87E0600C7AC4C /* MaskViewController.m */; };
 		04C7B43C20F87EE700C7AC4C /* iphoneX.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C7B43B20F87EE700C7AC4C /* iphoneX.png */; };
 		04C7B43E20F87F5100C7AC4C /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04C7B43D20F87F5100C7AC4C /* timg.jpeg */; };
@@ -44,8 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		048E3B0A20F7326200C66BD3 /* ShadeTextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShadeTextLabel.h; sourceTree = "<group>"; };
-		048E3B0B20F7326200C66BD3 /* ShadeTextLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShadeTextLabel.m; sourceTree = "<group>"; };
 		049784D320F48B1200540B9E /* MaskDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaskDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049784D620F48B1200540B9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		049784D720F48B1200540B9E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,13 +59,9 @@
 		049784FC20F48B1200540B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0497850820F48B5A00540B9E /* UIView+Mask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Mask.h"; sourceTree = "<group>"; };
 		0497850920F48B5A00540B9E /* UIView+Mask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Mask.m"; sourceTree = "<group>"; };
-		0497850B20F4A4DD00540B9E /* backImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backImage.png; sourceTree = "<group>"; };
 		0497850D20F4B06400540B9E /* ShadeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShadeLabel.h; sourceTree = "<group>"; };
 		0497850E20F4B06400540B9E /* ShadeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShadeLabel.m; sourceTree = "<group>"; };
-		04B1192D20FC246D00C5ADAB /* BezierDrawTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BezierDrawTextViewController.h; sourceTree = "<group>"; };
-		04B1192E20FC246D00C5ADAB /* BezierDrawTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BezierDrawTextViewController.m; sourceTree = "<group>"; };
-		04B1193020FC2EFF00C5ADAB /* MyImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyImageView.h; sourceTree = "<group>"; };
-		04B1193120FC2EFF00C5ADAB /* MyImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyImageView.m; sourceTree = "<group>"; };
+		04B1193320FC75CB00C5ADAB /* backImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backImage.jpg; sourceTree = "<group>"; };
 		04C7B43820F87E0600C7AC4C /* MaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaskViewController.h; sourceTree = "<group>"; };
 		04C7B43920F87E0600C7AC4C /* MaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaskViewController.m; sourceTree = "<group>"; };
 		04C7B43B20F87EE700C7AC4C /* iphoneX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneX.png; sourceTree = "<group>"; };
@@ -127,23 +118,17 @@
 			children = (
 				04C7B43D20F87F5100C7AC4C /* timg.jpeg */,
 				04C7B43B20F87EE700C7AC4C /* iphoneX.png */,
-				0497850B20F4A4DD00540B9E /* backImage.png */,
+				04B1193320FC75CB00C5ADAB /* backImage.jpg */,
 				049784D620F48B1200540B9E /* AppDelegate.h */,
 				049784D720F48B1200540B9E /* AppDelegate.m */,
 				049784D920F48B1200540B9E /* ViewController.h */,
 				049784DA20F48B1200540B9E /* ViewController.m */,
-				04B1193020FC2EFF00C5ADAB /* MyImageView.h */,
-				04B1193120FC2EFF00C5ADAB /* MyImageView.m */,
 				04C7B43820F87E0600C7AC4C /* MaskViewController.h */,
 				04C7B43920F87E0600C7AC4C /* MaskViewController.m */,
-				04B1192D20FC246D00C5ADAB /* BezierDrawTextViewController.h */,
-				04B1192E20FC246D00C5ADAB /* BezierDrawTextViewController.m */,
 				0497850820F48B5A00540B9E /* UIView+Mask.h */,
 				0497850920F48B5A00540B9E /* UIView+Mask.m */,
 				0497850D20F4B06400540B9E /* ShadeLabel.h */,
 				0497850E20F4B06400540B9E /* ShadeLabel.m */,
-				048E3B0A20F7326200C66BD3 /* ShadeTextLabel.h */,
-				048E3B0B20F7326200C66BD3 /* ShadeTextLabel.m */,
 				049784DC20F48B1200540B9E /* Main.storyboard */,
 				049784DF20F48B1200540B9E /* Assets.xcassets */,
 				049784E120F48B1200540B9E /* LaunchScreen.storyboard */,
@@ -277,7 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0497850C20F4A4DD00540B9E /* backImage.png in Resources */,
+				04B1193420FC75CB00C5ADAB /* backImage.jpg in Resources */,
 				049784E320F48B1200540B9E /* LaunchScreen.storyboard in Resources */,
 				04C7B43E20F87F5100C7AC4C /* timg.jpeg in Resources */,
 				049784E020F48B1200540B9E /* Assets.xcassets in Resources */,
@@ -308,14 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0497850A20F48B5A00540B9E /* UIView+Mask.m in Sources */,
-				04B1193220FC2EFF00C5ADAB /* MyImageView.m in Sources */,
 				049784DB20F48B1200540B9E /* ViewController.m in Sources */,
 				0497850F20F4B06400540B9E /* ShadeLabel.m in Sources */,
 				04C7B43A20F87E0600C7AC4C /* MaskViewController.m in Sources */,
-				04B1192F20FC246D00C5ADAB /* BezierDrawTextViewController.m in Sources */,
 				049784E620F48B1200540B9E /* main.m in Sources */,
 				049784D820F48B1200540B9E /* AppDelegate.m in Sources */,
-				048E3B0C20F7326200C66BD3 /* ShadeTextLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

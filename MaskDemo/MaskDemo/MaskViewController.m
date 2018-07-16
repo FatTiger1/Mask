@@ -39,15 +39,6 @@
     [self.imageViewTwo addCircleShadeView];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint touchPoint = [touch locationInView:self.view];
-//    NSLog(@"%ld  -------- %ld",touchPoint.x,touchPoint.y);
-    //touchPoint.x ，touchPoint.y 就是触点的坐标。
-    
-}
-
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView:self.view];

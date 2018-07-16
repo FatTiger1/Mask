@@ -17,10 +17,10 @@
     CGContextSaveGState(context);
     CGContextSetBlendMode(context, kCGBlendModeDestinationOut);
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
-    label.font = [UIFont boldSystemFontOfSize:120];
+    label.font = self.font;
     label.adjustsFontSizeToFitWidth = YES;
-    label.text = @"12345";
-    label.textAlignment = NSTextAlignmentCenter;
+    label.text = self.text;
+    label.textAlignment = self.textAlignment;
     label.backgroundColor = [UIColor yellowColor];
     [label.layer  drawInContext:context];
     CGContextRestoreGState(context);
