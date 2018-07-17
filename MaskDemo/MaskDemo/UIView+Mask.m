@@ -10,14 +10,15 @@
 #import <CoreText/CoreText.h>
 
 @implementation UIView (Mask)
+
 #pragma mark - 设置显示环形区域内容
 - (void)setAnnularWithWidth:(CGFloat)lineWidth annularStyle:(AnnularStyle)annularStyle{
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
-    shapeLayer.lineCap = kCALineCapButt;
-    shapeLayer.lineJoin = kCALineJoinRound;
-    shapeLayer.strokeColor = [UIColor redColor].CGColor;
-    shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.lineWidth = lineWidth;
+    shapeLayer.lineCap = kCALineCapButt;//处理拐角
+    shapeLayer.lineJoin = kCALineJoinRound;//处理终点
+    shapeLayer.strokeColor = [UIColor redColor].CGColor;//线的颜色不透明，此处内容才会被保留
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;//填充颜色选择透明此处内容才会被忽略
+    shapeLayer.lineWidth = lineWidth;//设置线宽
     shapeLayer.path = [self getCirclePathWith:lineWidth].CGPath;
     if (annularStyle == AnnularRectangle) {
         shapeLayer.path = [self getRectanglePathWith:lineWidth].CGPath;
@@ -25,49 +26,23 @@
     self.layer.mask = shapeLayer;
 }
 
-- (UIBezierPath *)getCirclePathWith:(CGFloat)lineWidth{
+- (UIBezierPath *)getCirclePathWith:(CGFloat)lineWidth{//用bezier绘制一个圆形
     CGFloat radius = MIN(self.frame.size.width/2.f, self.frame.size.height/2.f);
      UIBezierPath * bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2.f, self.frame.size.height/2.f) radius:radius - lineWidth/2 startAngle:0 endAngle:2 * M_PI clockwise:NO];
     return bezierPath;
 }
 
-- (UIBezierPath *)getRectanglePathWith:(CGFloat)lineWidth{
+- (UIBezierPath *)getRectanglePathWith:(CGFloat)lineWidth{//用bezier绘制一个长方形
     UIBezierPath * bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) cornerRadius:0];
     return bezierPath;
 }
 
-#pragma mark - 圆形镂空
-- (void)addCircleShadeView{
-    UIBezierPath * bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) cornerRadius:0];
-    [bezierPath appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:50 startAngle:0 endAngle:2 * M_PI clockwise:NO]];
-    CAShapeLayer * shapelayer = [CAShapeLayer layer];
-    shapelayer.path = bezierPath.CGPath;
-    shapelayer.fillColor = [UIColor redColor].CGColor;
-    self.layer.mask = shapelayer;
-}
-
-#pragma mark - 环形镂空
-- (void)addAnnularShadeView{
-    UIBezierPath * bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) cornerRadius:0];
-    [bezierPath appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:50 startAngle:0 endAngle:2 * M_PI clockwise:NO]];
-    CAShapeLayer * shapelayer = [CAShapeLayer layer];
-    shapelayer.path = bezierPath.CGPath;
-    shapelayer.strokeColor = [UIColor yellowColor].CGColor;
-    shapelayer.fillColor = [UIColor redColor].CGColor;
-    UIBezierPath * bezierPath1 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:20 startAngle:0 endAngle:2 * M_PI clockwise:NO];
-    [[UIColor clearColor] set];
-    [bezierPath1 stroke];
-    [bezierPath appendPath:bezierPath1];
-    shapelayer.path = bezierPath.CGPath;
-    self.layer.mask = shapelayer;
-}
-
-#pragma mark - 文字镂空
+#pragma mark - 显示文字区域
 - (void)addTextShadeWithText:(NSString *)text{
-    CGMutablePathRef letters = CGPathCreateMutable();//创建path
-    CTFontRef font = CTFontCreateWithName(CFSTR("Helvetica-Bold"), 30.f, NULL);//设置字体
+    CGMutablePathRef letters = CGPathCreateMutable();//创建一个路径
+    CTFontRef font = CTFontCreateWithName(CFSTR("Helvetica-Bold"), 50, NULL);//设置字体
     NSDictionary * attrs = [NSDictionary dictionaryWithObjectsAndKeys:(__bridge id)font,kCTFontAttributeName, nil];
-    NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:@"这是一个" attributes:attrs];
+    NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:text attributes:attrs];//创建富文本
     CTLineRef line = CTLineCreateWithAttributedString((CFAttributedStringRef)attrString);//创建line
     CFArrayRef runArray = CTLineGetGlyphRuns(line);//根据line获取一个数组
     //获得每一个run
@@ -112,6 +87,29 @@
     self.layer.mask = pathLayer;
 }
 
+#pragma mark - 圆形镂空
+- (void)addCircleShadeView{
+    UIBezierPath * bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) cornerRadius:0];//先绘制一个等view大小的区域
+    [bezierPath appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:50 startAngle:0 endAngle:2 * M_PI clockwise:NO]];//在上面区域内再绘制一个圆形
+    CAShapeLayer * shapelayer = [CAShapeLayer layer];
+    shapelayer.path = bezierPath.CGPath;
+    shapelayer.fillColor = [UIColor redColor].CGColor;//只要不设置为透明色都可以
+    self.layer.mask = shapelayer;
+}
+
+#pragma mark - 环形镂空
+- (void)addAnnularShadeView{
+    UIBezierPath * bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) cornerRadius:0];
+    [bezierPath appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:50 startAngle:0 endAngle:2 * M_PI clockwise:NO]];
+    CAShapeLayer * shapelayer = [CAShapeLayer layer];
+    shapelayer.fillColor = [UIColor redColor].CGColor;
+    UIBezierPath * bezierPath1 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:20 startAngle:0 endAngle:2 * M_PI clockwise:NO];
+    [bezierPath appendPath:bezierPath1];
+    shapelayer.path = bezierPath.CGPath;
+    self.layer.mask = shapelayer;
+}
+
+#pragma mark - 根据坐标显示一个圆形镂空区域
 - (void)addNewCircleShadeViewWith:(CGPoint)point{
     UIBezierPath * bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) cornerRadius:0];
     [bezierPath appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(point.x, point.y) radius:50 startAngle:0 endAngle:2 * M_PI clockwise:NO]];
@@ -120,5 +118,6 @@
     shapelayer.fillColor = [UIColor redColor].CGColor;
     self.layer.mask = shapelayer;
 }
+
 
 @end

@@ -24,6 +24,7 @@
 - (void)setUp{
     [self addImageViewOne];
     [self addImageViewTwo];
+    [self addLabel];
 }
 
 - (void)addImageViewOne{
@@ -39,10 +40,22 @@
     [self.imageViewTwo addCircleShadeView];
 }
 
+- (void)addLabel{
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width, 60)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = @"移动到这里返回";
+    label.font = [UIFont systemFontOfSize:20];
+    [self.view addSubview:label];
+}
+
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView:self.view];
     [self.imageViewTwo addNewCircleShadeViewWith:touchPoint];
+    if (touchPoint.y > self.view.frame.size.height - 60) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
