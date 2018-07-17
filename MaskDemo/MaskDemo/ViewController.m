@@ -27,13 +27,13 @@
 - (void)setUp{
     [self addScrollView];
     [self addImageViews];
-    [self setAnnularCircle];
-    [self setAnnularRectangle];
     [self addCircleShadeView];
     [self addAnnularShadeView];
     [self addShadeLabel];
-    [self addMaskView];
     [self addTextShadeView];
+    [self addMaskView];
+    [self setAnnularCircle];
+    [self setAnnularRectangle];
 }
 
 - (void)addScrollView{
@@ -42,7 +42,7 @@
 }
 
 - (void)addImageViews{
-    for (int i = 0; i < 6; i ++) {
+    for (int i = 0; i < 7; i ++) {
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30 + i * ((self.view.frame.size.width - 20) * 0.7), self.view.frame.size.width - 20, (self.view.frame.size.width - 20)*0.6)];
         imageView.tag = 100 + i;
         imageView.image = [UIImage imageNamed:@"backImage.jpg"];
@@ -61,18 +61,8 @@
     [imageView setAnnularWithWidth:20 annularStyle:AnnularRectangle];
 }
 
-- (void)addCircleShadeView{
-    UIImageView * imageView = [self.view viewWithTag:102];
-    [imageView addCircleShadeView];
-}
-
-- (void)addAnnularShadeView{
-    UIImageView * imageView = [self.view viewWithTag:103];
-    [imageView addAnnularShadeView];
-}
-
 - (void)addShadeLabel{
-    UIImageView * imageView = [self.view viewWithTag:104];
+    UIImageView * imageView = [self.view viewWithTag:102];
     ShadeLabel * shadeLabel = [[ShadeLabel alloc] initWithFrame:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
     shadeLabel.text = @"HELLO!";
     shadeLabel.textAlignment = NSTextAlignmentCenter;
@@ -81,8 +71,18 @@
 }
 
 - (void)addTextShadeView{
-    UIImageView * imageView = [self.view viewWithTag:105];
+    UIImageView * imageView = [self.view viewWithTag:103];
     [imageView addTextShadeWithText:@"HELLO!"];
+}
+
+- (void)addCircleShadeView{
+    UIImageView * imageView = [self.view viewWithTag:104];
+    [imageView addCircleShadeView];
+}
+
+- (void)addAnnularShadeView{
+    UIImageView * imageView = [self.view viewWithTag:105];
+    [imageView addAnnularShadeView];
 }
 
 - (void)addMaskView{
@@ -103,6 +103,13 @@
     MaskViewController * maskVC = [[MaskViewController alloc] init];
     [self presentViewController:maskVC animated:YES completion:nil];
 }
+
+
+
+
+
+
+
 
 
 
